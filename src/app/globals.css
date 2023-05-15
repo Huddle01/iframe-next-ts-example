@@ -25,3 +25,8 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+button {
+  background: dodgerblue;
+  margin: 1rem 2rem;
+}
