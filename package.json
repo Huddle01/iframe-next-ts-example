@@ -9,13 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@huddle01/iframe": "^0.0.1",
     "@types/node": "20.1.4",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
     "autoprefixer": "10.4.14",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.2",
-    "iframe": "link:../../../DAO/sdk/iframe",
     "next": "13.4.2",
     "postcss": "8.4.23",
     "react": "18.2.0",
