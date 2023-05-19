@@ -1,13 +1,12 @@
 "use client";
 
-import { HuddleIframe, api } from "@huddle01/iframe";
+import { HuddleIframe, huddleIframe, useEventListner } from "@huddle01/iframe";
 import { useEffect, useState } from "react";
 
 export default function Home() {
   const [checkBoxes, setCheckBoxes] = useState({
     gradientAndMesh: true,
     vr: true,
-    wallet: true,
     isCopyMeetingVisible: true,
   });
 
@@ -15,19 +14,64 @@ export default function Home() {
     redirectUrlOnLeave: "",
   });
 
+  const [isAllWallets, setIsAllWallets] = useState(true);
+
+  const initialWallets = {
+    metamask: true,
+    walletconnect: true,
+    phantom: true,
+    templewallet: true,
+    keplr: true,
+    lens: true,
+    ud: true,
+    cyberconnect: true,
+  };
+  const falseWallets = {
+    metamask: false,
+    walletconnect: false,
+    phantom: false,
+    templewallet: false,
+    keplr: false,
+    lens: false,
+    ud: false,
+    cyberconnect: false,
+  };
+
+  interface IWallets {
+    metamask: boolean;
+    walletconnect: boolean;
+    phantom: boolean;
+    templewallet: boolean;
+    keplr: boolean;
+    lens: boolean;
+    ud: boolean;
+    cyberconnect: boolean;
+  }
+
+  const [wallets, setWallets] = useState<IWallets>(initialWallets);
+
+  useEventListner("lobby:joined", (data) => {
+    console.log({ "lobby:joined": data });
+  });
+  useEventListner("room:new-peer", (data) => {
+    console.log({ "room:new-peer": data });
+  });
+
   useEffect(() => {
-    const handleIframe = (event: MessageEvent<any>) => {
-      if (event.data.type !== "huddle01-iframe-from-iframe") return;
+    const newWallets = isAllWallets
+      ? ["*"]
+      : [
+          ...(Object.keys(wallets).filter(
+            (key) => wallets[key as keyof typeof wallets]
+          ) as any),
+        ];
 
-      console.info({ type: "iframe-event-parent", data: event?.data });
-    };
+    console.log({ newWallets });
 
-    window.addEventListener("message", handleIframe);
-
-    return () => {
-      window.removeEventListener("message", handleIframe);
-    };
-  }, []);
+    huddleIframe.initialize({
+      wallets: newWallets,
+    });
+  }, [wallets, isAllWallets]);
 
   return (
     <main className="h-screen">
@@ -44,7 +88,7 @@ export default function Home() {
                   ...checkBoxes,
                   [e.target.name]: e.target.checked,
                 });
-                api.initialize({
+                huddleIframe.initialize({
                   [key]: e.target.checked,
                 });
               }}
@@ -55,15 +99,21 @@ export default function Home() {
       </div>
 
       <div className="grid grid-cols-3 gap-2 p-6">
-        <button onClick={() => api.muteMic()}>Mute</button>
-        <button onClick={() => api.unmuteMic()}>Unmute</button>
-        <button onClick={() => api.enableShare()}>enableShare</button>
-        <button onClick={() => api.disableShare()}>disableShare</button>
-        <button onClick={() => api.enableWebcam()}>enableWebcam</button>
-        <button onClick={() => api.disableWebcam()}>disableWebcam</button>
+        <button onClick={() => huddleIframe.muteMic()}>Mute</button>
+        <button onClick={() => huddleIframe.unmuteMic()}>Unmute</button>
+        <button onClick={() => huddleIframe.enableShare()}>enableShare</button>
+        <button onClick={() => huddleIframe.disableShare()}>
+          disableShare
+        </button>
+        <button onClick={() => huddleIframe.enableWebcam()}>
+          enableWebcam
+        </button>
+        <button onClick={() => huddleIframe.disableWebcam()}>
+          disableWebcam
+        </button>
         <button
           onClick={() =>
-            api.initialize({
+            huddleIframe.initialize({
               background:
                 "bg-[linear-gradient(to_right_bottom,rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('https://picsum.photos/1920/1080')] bg-cover",
             })
@@ -91,20 +141,55 @@ export default function Home() {
             />
             <button
               onClick={() =>
-                api.initialize({
+                huddleIframe.initialize({
                   [key]: inputBoxes[key as keyof typeof inputBoxes],
                 })
               }
             >
-              submit
+              Save
             </button>
           </div>
         ))}
       </div>
 
-      <div className="aspect-video w-full mx-auto  p-4">
+      <div className="p-6">Wallets</div>
+
+      <div className="grid grid-cols-3 p-6">
+        <div className="flex my-2 items-center">
+          <input
+            className="mr-0 h-10 w-10 scale-50"
+            type="checkbox"
+            name={"All"}
+            checked={isAllWallets}
+            onChange={(e) => {
+              setIsAllWallets(e.target.checked);
+              setWallets(e.target.checked ? initialWallets : falseWallets);
+            }}
+          />
+          <div>All</div>
+        </div>
+        {Object.keys(wallets).map((key) => (
+          <div key={key} className="flex my-2 items-center">
+            <input
+              className="mr-0 h-10 w-10 scale-50"
+              type="checkbox"
+              name={key}
+              checked={wallets[key as keyof typeof wallets]}
+              onChange={(e) => {
+                setWallets({
+                  ...wallets,
+                  [e.target.name]: e.target.checked,
+                });
+                setIsAllWallets(false);
+              }}
+            />
+            <div>{key}</div>
+          </div>
+        ))}
+      </div>
+
+      <div className="aspect-video w-full mx-auto p-4">
         <HuddleIframe
-          config={{}}
           roomUrl="https://axit.huddle01.com/"
           className="w-full aspect-video"
         />
