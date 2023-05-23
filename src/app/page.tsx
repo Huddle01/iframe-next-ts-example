@@ -12,6 +12,7 @@ export default function Home() {
 
   const [inputBoxes, setInputBoxes] = useState({
     redirectUrlOnLeave: "",
+    background: "",
   });
 
   const [isAllWallets, setIsAllWallets] = useState(true);
@@ -110,16 +111,6 @@ export default function Home() {
         </button>
         <button onClick={() => huddleIframe.disableWebcam()}>
           disableWebcam
-        </button>
-        <button
-          onClick={() =>
-            huddleIframe.initialize({
-              background:
-                "bg-[linear-gradient(to_right_bottom,rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('https://picsum.photos/1920/1080')] bg-cover",
-            })
-          }
-        >
-          Add Background
         </button>
       </div>
 
