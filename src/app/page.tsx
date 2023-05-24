@@ -181,7 +181,7 @@ export default function Home() {
 
       <div className="aspect-video w-full mx-auto p-4">
         <HuddleIframe
-          roomUrl="https://axit.huddle01.com/"
+          roomUrl="https://iframe.huddle01.com/"
           className="w-full aspect-video"
         />
       </div>
