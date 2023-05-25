@@ -1,6 +1,6 @@
 "use client";
 
-import { HuddleIframe, huddleIframe, useEventListner } from "@huddle01/iframe";
+import { HuddleIframe, iframeApi, useEventListner } from "@huddle01/iframe";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -69,7 +69,7 @@ export default function Home() {
 
     console.log({ newWallets });
 
-    huddleIframe.initialize({
+    iframeApi.initialize({
       wallets: newWallets,
     });
   }, [wallets, isAllWallets]);
@@ -89,7 +89,7 @@ export default function Home() {
                   ...checkBoxes,
                   [e.target.name]: e.target.checked,
                 });
-                huddleIframe.initialize({
+                iframeApi.initialize({
                   [key]: e.target.checked,
                 });
               }}
@@ -100,18 +100,12 @@ export default function Home() {
       </div>
 
       <div className="grid grid-cols-3 gap-2 p-6">
-        <button onClick={() => huddleIframe.muteMic()}>Mute</button>
-        <button onClick={() => huddleIframe.unmuteMic()}>Unmute</button>
-        <button onClick={() => huddleIframe.enableShare()}>enableShare</button>
-        <button onClick={() => huddleIframe.disableShare()}>
-          disableShare
-        </button>
-        <button onClick={() => huddleIframe.enableWebcam()}>
-          enableWebcam
-        </button>
-        <button onClick={() => huddleIframe.disableWebcam()}>
-          disableWebcam
-        </button>
+        <button onClick={() => iframeApi.muteMic()}>Mute</button>
+        <button onClick={() => iframeApi.unmuteMic()}>Unmute</button>
+        <button onClick={() => iframeApi.enableShare()}>enableShare</button>
+        <button onClick={() => iframeApi.disableShare()}>disableShare</button>
+        <button onClick={() => iframeApi.enableWebcam()}>enableWebcam</button>
+        <button onClick={() => iframeApi.disableWebcam()}>disableWebcam</button>
       </div>
 
       <div className=" gap-2 p-6">
@@ -132,7 +126,7 @@ export default function Home() {
             />
             <button
               onClick={() =>
-                huddleIframe.initialize({
+                iframeApi.initialize({
                   [key]: inputBoxes[key as keyof typeof inputBoxes],
                 })
               }
