@@ -2,8 +2,8 @@ lockfileVersion: '6.0'
 
 dependencies:
   '@huddle01/iframe':
-    specifier: ^0.0.5
-    version: 0.0.5(react@18.2.0)
+    specifier: ^0.0.7
+    version: 0.0.7(react@18.2.0)
   '@types/node':
     specifier: 20.1.4
     version: 20.1.4
@@ -92,8 +92,8 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: false
 
-  /@huddle01/iframe@0.0.5(react@18.2.0):
-    resolution: {integrity: sha512-sgoBEt0maMl7Pmf2vV3OOBNy+1B9+c5godedHlkJDlGfCLfdzJJUD7Cos2G2jyHCOxQRhMdtq6uznmW5tTUIag==}
+  /@huddle01/iframe@0.0.7(react@18.2.0):
+    resolution: {integrity: sha512-G9JR1WFNONn3qeJInCAGo4pr8hokxNjfaCy8Piggd5+kaDIymPjywiHnh1j0H+alJWRyEL4KC1nMCw8y+CszQA==}
     peerDependencies:
       react: ^18.2.0
     dependencies:
