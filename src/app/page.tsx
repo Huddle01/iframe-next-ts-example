@@ -14,7 +14,7 @@ export default function Home() {
   useEventListner("lobby:initialized", () => {
     iframeApi.initialize({
       redirectUrlOnLeave: "https://huddle01.com",
-      background: "https://cdn.wallpapersafari.com/43/49/KCAD4F.jpg",
+      background: "https://picsum.photos/1920/1080?blur=2",
       wallets: ["metamask"],
     });
   });
