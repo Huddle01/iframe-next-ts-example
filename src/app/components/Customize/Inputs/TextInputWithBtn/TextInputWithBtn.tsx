@@ -9,6 +9,7 @@ const TextInputWithBtn = ({
   placeholder,
   value,
   onChange,
+  className,
 }: Props & TInputProps) => {
   return (
     <div className="flex gap-2 odd:my-3 ">
@@ -17,6 +18,7 @@ const TextInputWithBtn = ({
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        className={className}
       />
       <Button>Save</Button>
     </div>

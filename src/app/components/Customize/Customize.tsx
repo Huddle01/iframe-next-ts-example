@@ -4,7 +4,7 @@ import Inputs from "./Inputs/Inputs";
 
 const Customize = () => {
   return (
-    <div className="bg-neutral-900 border border-slate-700 p-6 rounded-tr-2xl rounded-br-2xl">
+    <div className="bg-[#121214] border border-slate-700 p-6 rounded-tr-2xl rounded-br-2xl">
       {/* header */}
       <div className="flex justify-between items-center gap-44">
         <div className="text-slate-300 font-semibold text-xl">Customize</div>
