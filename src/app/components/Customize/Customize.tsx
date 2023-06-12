@@ -1,5 +1,6 @@
 import React from "react";
 import Essentials from "./Essentials/Essentials";
+import Inputs from "./Inputs/Inputs";
 
 const Customize = () => {
   return (
@@ -10,6 +11,7 @@ const Customize = () => {
         <div className="text-blue-400 font-medium">Reset</div>
       </div>
       <Essentials />
+      <Inputs />
     </div>
   );
 };
