@@ -16,6 +16,9 @@ module.exports = {
         primary: {
           500: "#246BFD",
         },
+        dark: {
+          100: "#23262F",
+        },
         slate: {
           25: "#FCFCFD",
           200: "#E2E5E9",
