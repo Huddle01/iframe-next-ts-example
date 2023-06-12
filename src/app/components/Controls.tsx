@@ -2,6 +2,14 @@ import React, { useEffect, useState } from "react";
 import { TReaction, reactions } from "@huddle01/iframe/types";
 import { iframeApi } from "@huddle01/iframe";
 
+import clsx from "clsx";
+import { Inter } from "next/font/google";
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+});
+
 const Controls = () => {
   const [checkBoxes, setCheckBoxes] = useState({
     gradientAndMesh: true,
@@ -70,8 +78,15 @@ const Controls = () => {
   }, [wallets, isAllWallets]);
 
   return (
-    <div className="w-fit bg-zinc-900 py-4 rounded-lg">
-      <div className="px-6 text-2xl">Control Panel</div>
+    <div className="w-fit bg-neutral-900 border  border-slate-700 py-4 rounded-lg">
+      <div
+        className={clsx(
+          "px-6 text-2xl text-slate-300 font-semibold",
+          inter.variable
+        )}
+      >
+        Customize
+      </div>
 
       <div className="grid grid-cols-2 p-6">
         {Object.keys(checkBoxes).map((key) => (

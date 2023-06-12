@@ -1,7 +1,7 @@
 "use client";
 
 import { HuddleIframe, iframeApi, useEventListner } from "@huddle01/iframe";
-import Controls from "./components/Controls";
+import Customize from "./components/Customize/Customize";
 
 export default function Home() {
   useEventListner("lobby:joined", (data) => {
@@ -21,7 +21,7 @@ export default function Home() {
 
   return (
     <main className="h-screen flex items-center">
-      <Controls />
+      <Customize />
       <div className="aspect-video w-full mx-auto p-4 flex">
         <HuddleIframe
           // roomUrl="http://localhost:3000/"
