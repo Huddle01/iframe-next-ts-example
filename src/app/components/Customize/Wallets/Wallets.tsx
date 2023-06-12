@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Section from "../Section/Section";
 import Checkbox from "./Checkbox";
 import CheckboxWithName from "./CheckboxWithName";
+import { iframeApi } from "@huddle01/iframe";
 
 interface IWallets {
   metamask: boolean;
@@ -43,7 +44,24 @@ const Wallets = () => {
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWallets((prev) => ({ ...prev, [e.target.name]: e.target.checked }));
+    setAll(false);
   };
+
+  useEffect(() => {
+    const newWallets = all
+      ? ["*"]
+      : [
+          ...(Object.keys(wallets).filter(
+            (key) => wallets[key as keyof typeof wallets]
+          ) as any),
+        ];
+
+    console.log({ newWallets });
+
+    iframeApi.initialize({
+      wallets: newWallets,
+    });
+  }, [wallets, all]);
 
   return (
     <Section title="Wallets & DIDs">

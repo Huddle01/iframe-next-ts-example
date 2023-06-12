@@ -4,9 +4,9 @@ import Toggle from "./Toggle";
 
 import EssentialsIcons, { IEssentialsIcons } from "./EssentialsIcons";
 
-type Props = {};
+import { iframeApi } from "@huddle01/iframe";
 
-const Essentials = (props: Props) => {
+const Essentials = () => {
   const [essentials, setEssentials] = useState<{
     [key in IEssentialsIcons]: boolean;
   }>({
@@ -21,22 +21,54 @@ const Essentials = (props: Props) => {
 
   return (
     <Section title="Essentials">
-      {Object.keys(EssentialsIcons).map((key) => (
-        <div key={key} className="flex justify-between odd:my-3 items-center">
-          <div className="flex items-center">
-            <div className="mr-3 ">
-              {EssentialsIcons[key as IEssentialsIcons]}
-            </div>
-
-            {key}
-          </div>
-          <Toggle
-            name={key}
-            checked={essentials[key as IEssentialsIcons]}
-            onChange={onChange}
-          />
+      <div className="flex justify-between odd:my-3 items-center text-sm font-medium">
+        <div className="flex items-center">
+          <div className="mr-3 ">{EssentialsIcons.Camera}</div>
+          <div>Camera</div>
         </div>
-      ))}
+        <Toggle
+          name={"Camera"}
+          checked={essentials.Camera}
+          onChange={(e) => {
+            if (essentials.Camera) iframeApi.disableWebcam();
+            else iframeApi.enableWebcam();
+
+            onChange(e);
+          }}
+        />
+      </div>
+      <div className="flex justify-between odd:my-3 items-center">
+        <div className="flex items-center">
+          <div className="mr-3 ">{EssentialsIcons.Microphone}</div>
+          <div>Microphone</div>
+        </div>
+        <Toggle
+          name={"Microphone"}
+          checked={essentials.Microphone}
+          onChange={(e) => {
+            if (essentials.Microphone) iframeApi.muteMic();
+            else iframeApi.unmuteMic();
+
+            onChange(e);
+          }}
+        />
+      </div>
+      <div className="flex justify-between odd:my-3 items-center">
+        <div className="flex items-center">
+          <div className="mr-3 ">{EssentialsIcons["Screen Share"]}</div>
+          <div>Screen Share</div>
+        </div>
+        <Toggle
+          name={"Screen Share"}
+          checked={essentials["Screen Share"]}
+          onChange={(e) => {
+            if (essentials["Screen Share"]) iframeApi.disableShare();
+            else iframeApi.enableShare();
+
+            onChange(e);
+          }}
+        />
+      </div>
     </Section>
   );
 };

@@ -2,6 +2,7 @@ import React from "react";
 import Essentials from "./Essentials/Essentials";
 import Inputs from "./Inputs/Inputs";
 import Wallets from "./Wallets/Wallets";
+import Additional from "./Additional/Additional";
 
 const Customize = () => {
   return (
@@ -13,6 +14,7 @@ const Customize = () => {
       <Essentials />
       <Inputs />
       <Wallets />
+      <Additional />
     </div>
   );
 };

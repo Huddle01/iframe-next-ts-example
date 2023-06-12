@@ -4,6 +4,7 @@ import TextInputWithBtn from "./TextInputWithBtn/TextInputWithBtn";
 import Select from "./TextInputWithBtn/Select";
 import { TReaction, reactions } from "@huddle01/iframe/types";
 import Button from "./TextInputWithBtn/Button";
+import { iframeApi } from "@huddle01/iframe";
 
 type Props = {};
 
@@ -13,6 +14,11 @@ function Inputs({}: Props) {
     backgroundURL: "",
     avatarURL: "",
   });
+
+  const keys = {
+    redirectURLOnLeave: "redirectUrlOnLeave",
+    backgroundURL: "background",
+  };
 
   const [reaction, setReaction] = useState<TReaction>("🎉");
 
@@ -31,6 +37,20 @@ function Inputs({}: Props) {
           placeholder={key}
           value={inputs[key as keyof typeof inputs]}
           onChange={onTextChange}
+          onClick={() => {
+            if (key === "avatarURL") {
+              return iframeApi.changeAvatarUrl(inputs.avatarURL);
+            }
+            console.log("Inputs", {
+              [keys[key as keyof typeof keys]]:
+                inputs[key as keyof typeof inputs],
+            });
+
+            iframeApi.initialize({
+              [keys[key as keyof typeof keys]]:
+                inputs[key as keyof typeof inputs],
+            });
+          }}
         />
       ))}
 
@@ -40,7 +60,9 @@ function Inputs({}: Props) {
           options={reactions}
           onChange={onReactionChange}
         />
-        <Button>Send Emoji</Button>
+        <Button onClick={() => iframeApi.sendReaction(reaction)}>
+          Send Emoji
+        </Button>
       </div>
     </Section>
   );

@@ -2,7 +2,17 @@ import React from "react";
 import TextInput, { TInputProps } from "./TextInput";
 import Button from "./Button";
 
-type Props = {};
+type Props = {
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+};
+
+type TBtn = Pick<
+  React.DetailedHTMLProps<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  >,
+  "onClick"
+>;
 
 const TextInputWithBtn = ({
   name,
@@ -10,7 +20,8 @@ const TextInputWithBtn = ({
   value,
   onChange,
   className,
-}: Props & TInputProps) => {
+  onClick,
+}: Props & TInputProps & TBtn) => {
   return (
     <div className="flex gap-2 odd:my-3 ">
       <TextInput
@@ -20,7 +31,7 @@ const TextInputWithBtn = ({
         onChange={onChange}
         className={className}
       />
-      <Button>Save</Button>
+      <Button onClick={onClick}>Save</Button>
     </div>
   );
 };

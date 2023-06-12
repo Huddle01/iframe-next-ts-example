@@ -24,6 +24,7 @@ const TextInput = ({
         "border border-[#31363F] bg-slate-700 flex-1 rounded-lg px-3 outline-none",
         className
       )}
+      autoComplete="off"
       name={name}
       placeholder={placeholder}
       value={value}
