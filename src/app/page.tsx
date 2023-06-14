@@ -17,7 +17,6 @@ export default function Home() {
     iframeApi.initialize({
       redirectUrlOnLeave: "https://huddle01.com",
       background: "https://picsum.photos/1920/1080?blur=2",
-      wallets: ["metamask"],
     });
   });
 
@@ -27,7 +26,7 @@ export default function Home() {
         <HuddleLogo />
         <DocBtn />
       </div>
-      <div className="flex items-center bg-red-500 w-full flex-1">
+      <div className="flex items-center w-full flex-1">
         <Customize />
         <div className="aspect-video w-full mx-auto p-4 flex">
           <HuddleIframe

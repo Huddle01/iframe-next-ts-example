@@ -40,7 +40,7 @@ const Wallets = () => {
 
   const [wallets, setWallets] = useState<IWallets>(initialWallets);
 
-  const [all, setAll] = useState(false);
+  const [all, setAll] = useState(true);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWallets((prev) => ({ ...prev, [e.target.name]: e.target.checked }));

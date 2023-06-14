@@ -4,11 +4,13 @@ import TextInputWithBtn from "./TextInputWithBtn/TextInputWithBtn";
 import Select from "./TextInputWithBtn/Select";
 import { TReaction, reactions } from "@huddle01/iframe/types";
 import Button from "./TextInputWithBtn/Button";
-import { iframeApi } from "@huddle01/iframe";
+import { iframeApi, useEventListner } from "@huddle01/iframe";
 
 type Props = {};
 
 function Inputs({}: Props) {
+  const [isRoomJoined, setIsRoomJoined] = useState(false);
+
   const [inputs, setInputs] = useState({
     redirectURLOnLeave: "",
     backgroundURL: "",
@@ -28,13 +30,17 @@ function Inputs({}: Props) {
   const onReactionChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
     setReaction(e.target.value as TReaction);
 
+  useEventListner("room:joined", () => {
+    setIsRoomJoined(true);
+  });
+
   return (
     <Section title="Inputs">
       {Object.keys(inputs).map((key) => (
         <TextInputWithBtn
           key={key}
           name={key}
-          placeholder={key}
+          placeholder={`Paste ${key}`}
           value={inputs[key as keyof typeof inputs]}
           onChange={onTextChange}
           onClick={() => {
@@ -56,11 +62,15 @@ function Inputs({}: Props) {
 
       <div className="flex mt-3">
         <Select
+          disabled={!isRoomJoined}
           value={reaction}
           options={reactions}
           onChange={onReactionChange}
         />
-        <Button onClick={() => iframeApi.sendReaction(reaction)}>
+        <Button
+          disabled={!isRoomJoined}
+          onClick={() => iframeApi.sendReaction(reaction)}
+        >
           Send Emoji
         </Button>
       </div>

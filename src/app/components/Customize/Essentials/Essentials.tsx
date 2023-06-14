@@ -6,7 +6,12 @@ import EssentialsIcons, { IEssentialsIcons } from "./EssentialsIcons";
 
 import { iframeApi } from "@huddle01/iframe";
 
+import cn from "clsx";
+import { useEventListner } from "@huddle01/iframe";
+
 const Essentials = () => {
+  const [isRoomJoined, setIsRoomJoined] = useState(false);
+
   const [essentials, setEssentials] = useState<{
     [key in IEssentialsIcons]: boolean;
   }>({
@@ -19,8 +24,16 @@ const Essentials = () => {
     setEssentials((prev) => ({ ...prev, [e.target.name]: e.target.checked }));
   };
 
+  useEventListner("room:joined", () => {
+    setIsRoomJoined(true);
+    setEssentials((prev) => ({ ...prev, Microphone: true, Camera: true }));
+  });
+
   return (
-    <Section title="Essentials">
+    <Section
+      className={cn(!isRoomJoined && "opacity-50")}
+      title={`Essentials ${!isRoomJoined ? "(Room Not Joined)" : ""}`}
+    >
       <div className="flex justify-between odd:my-3 items-center text-sm font-medium">
         <div className="flex items-center">
           <div className="mr-3 ">{EssentialsIcons.Camera}</div>
@@ -30,6 +43,7 @@ const Essentials = () => {
           name={"Camera"}
           checked={essentials.Camera}
           onChange={(e) => {
+            if (!isRoomJoined) return;
             if (essentials.Camera) iframeApi.disableWebcam();
             else iframeApi.enableWebcam();
 
@@ -46,6 +60,8 @@ const Essentials = () => {
           name={"Microphone"}
           checked={essentials.Microphone}
           onChange={(e) => {
+            if (!isRoomJoined) return;
+
             if (essentials.Microphone) iframeApi.muteMic();
             else iframeApi.unmuteMic();
 
@@ -62,6 +78,8 @@ const Essentials = () => {
           name={"Screen Share"}
           checked={essentials["Screen Share"]}
           onChange={(e) => {
+            if (!isRoomJoined) return;
+
             if (essentials["Screen Share"]) iframeApi.disableShare();
             else iframeApi.enableShare();
 
