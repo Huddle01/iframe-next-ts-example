@@ -1,7 +1,9 @@
 "use client";
 
 import { HuddleIframe, iframeApi, useEventListner } from "@huddle01/iframe";
-import Controls from "./components/Controls";
+import Customize from "./components/Customize/Customize";
+import HuddleLogo from "./components/HuddleLogo";
+import DocBtn from "./components/DocBtn";
 
 export default function Home() {
   useEventListner("lobby:joined", (data) => {
@@ -15,19 +17,24 @@ export default function Home() {
     iframeApi.initialize({
       redirectUrlOnLeave: "https://huddle01.com",
       background: "https://picsum.photos/1920/1080?blur=2",
-      wallets: ["metamask"],
     });
   });
 
   return (
-    <main className="h-screen flex items-center">
-      <Controls />
-      <div className="aspect-video w-full mx-auto p-4 flex">
-        <HuddleIframe
-          // roomUrl="http://localhost:3000/"
-          roomUrl="https://iframe.huddle01.com/"
-          className="w-full aspect-video"
-        />
+    <main className="h-screen flex items-center flex-col">
+      <div className="flex items-center justify-between w-full py-3 px-6">
+        <HuddleLogo />
+        <DocBtn />
+      </div>
+      <div className="flex items-center w-full flex-1">
+        <Customize />
+        <div className="aspect-video w-full mx-auto p-4 flex">
+          <HuddleIframe
+            // roomUrl="http://localhost:3000/"
+            roomUrl="https://iframe.huddle01.com/"
+            className="w-full aspect-video"
+          />
+        </div>
       </div>
     </main>
   );
