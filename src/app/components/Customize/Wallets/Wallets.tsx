@@ -13,6 +13,7 @@ interface IWallets {
   lens: boolean;
   ud: boolean;
   cyberconnect: boolean;
+  okxwallet: boolean;
 }
 
 const Wallets = () => {
@@ -25,6 +26,7 @@ const Wallets = () => {
     lens: true,
     ud: true,
     cyberconnect: true,
+    okxwallet: true,
   };
 
   const walletNames = {
@@ -36,6 +38,7 @@ const Wallets = () => {
     lens: "Lens",
     ud: "UD",
     cyberconnect: "CyberConnect",
+    okxwallet: "OKX",
   };
 
   const [wallets, setWallets] = useState<IWallets>(initialWallets);

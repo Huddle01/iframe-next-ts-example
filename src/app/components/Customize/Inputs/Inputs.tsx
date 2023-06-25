@@ -15,11 +15,13 @@ function Inputs({}: Props) {
     redirectURLOnLeave: "",
     backgroundURL: "",
     avatarURL: "",
+    logoURL: "",
   });
 
   const keys = {
     redirectURLOnLeave: "redirectUrlOnLeave",
     backgroundURL: "background",
+    logoURL: "logoUrl",
   };
 
   const [reaction, setReaction] = useState<TReaction>("🎉");
