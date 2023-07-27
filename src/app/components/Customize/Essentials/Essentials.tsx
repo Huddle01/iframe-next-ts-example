@@ -29,6 +29,10 @@ const Essentials = () => {
     setEssentials((prev) => ({ ...prev, Microphone: true, Camera: true }));
   });
 
+  useEventListner("room:failed", ({ reason }) => {
+    console.log({ reason });
+  });
+
   return (
     <Section
       className={cn(!isRoomJoined && "opacity-50")}
