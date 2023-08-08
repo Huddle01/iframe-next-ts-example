@@ -13,6 +13,7 @@ interface IWallets {
   lens: boolean;
   ud: boolean;
   cyberconnect: boolean;
+  okxwallet: boolean;
 }
 
 const Wallets = () => {
