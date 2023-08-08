@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@huddle01/iframe':
-    specifier: ^0.0.7
-    version: 0.0.7(react@18.2.0)
+    specifier: ^0.0.9
+    version: 0.0.9(react@18.2.0)
   '@types/node':
     specifier: 20.1.4
     version: 20.1.4
@@ -99,8 +99,8 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: false
 
-  /@huddle01/iframe@0.0.7(react@18.2.0):
-    resolution: {integrity: sha512-G9JR1WFNONn3qeJInCAGo4pr8hokxNjfaCy8Piggd5+kaDIymPjywiHnh1j0H+alJWRyEL4KC1nMCw8y+CszQA==}
+  /@huddle01/iframe@0.0.9(react@18.2.0):
+    resolution: {integrity: sha512-GOGXEF/Zkh1dzG2s2UHNd/k4QfpLVpkRLGdg+ahSpk2oXu+PpynXCgL1el7IVl1Zta8Bwt38Cjq8gPqMV8BgrA==}
     peerDependencies:
       react: ^18.2.0
     dependencies:

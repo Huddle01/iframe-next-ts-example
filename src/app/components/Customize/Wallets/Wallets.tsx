@@ -8,7 +8,7 @@ interface IWallets {
   metamask: boolean;
   walletconnect: boolean;
   phantom: boolean;
-  templewallet: boolean;
+  // templewallet: boolean;
   keplr: boolean;
   lens: boolean;
   ud: boolean;
@@ -20,11 +20,13 @@ const Wallets = () => {
     metamask: true,
     walletconnect: true,
     phantom: true,
-    templewallet: true,
+    // templewallet: true,
     keplr: true,
     lens: true,
     ud: true,
     cyberconnect: true,
+    beacon: true,
+    okxwallet: true,
   };
 
   const walletNames = {
@@ -32,10 +34,12 @@ const Wallets = () => {
     metamask: "Metamask",
     walletconnect: "WalletConnect",
     phantom: "Phantom",
-    templewallet: "Temple",
+    // templewallet: "Temple",
     lens: "Lens",
     ud: "UD",
     cyberconnect: "CyberConnect",
+    beacon: "Beacon",
+    okxwallet: "OKX Wallet",
   };
 
   const [wallets, setWallets] = useState<IWallets>(initialWallets);
