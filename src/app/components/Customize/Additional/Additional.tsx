@@ -5,12 +5,10 @@ import { iframeApi } from "@huddle01/iframe";
 
 const Additional = () => {
   const [checkBoxes, setCheckBoxes] = useState({
-    gradientAndMesh: true,
     isCopyMeetingVisible: true,
   });
 
   const Names = {
-    gradientAndMesh: "Gradient and mesh",
     isCopyMeetingVisible: "Copy meeting link button",
   };
 
