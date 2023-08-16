@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@huddle01/iframe':
-    specifier: ^0.0.9
-    version: 0.0.9(react@18.2.0)
+    specifier: link:../../DAO/sdk/iframe
+    version: link:../../DAO/sdk/iframe
   '@types/node':
     specifier: 20.1.4
     version: 20.1.4
@@ -97,15 +97,6 @@ packages:
   /@eslint/js@8.40.0:
     resolution: {integrity: sha512-ElyB54bJIhXQYVKjDSvCkPO1iU1tSAeVQJbllWJq1XQSmmA4dgFk8CbiBGpiOPxleE48vDogxCtmMYku4HSVLA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-    dev: false
-
-  /@huddle01/iframe@0.0.9(react@18.2.0):
-    resolution: {integrity: sha512-GOGXEF/Zkh1dzG2s2UHNd/k4QfpLVpkRLGdg+ahSpk2oXu+PpynXCgL1el7IVl1Zta8Bwt38Cjq8gPqMV8BgrA==}
-    peerDependencies:
-      react: ^18.2.0
-    dependencies:
-      react: 18.2.0
-      zod: 3.21.4
     dev: false
 
   /@humanwhocodes/config-array@0.11.8:
