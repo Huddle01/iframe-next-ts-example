@@ -46,6 +46,7 @@ const Wallets = () => {
   const [wallets, setWallets] = useState<IWallets>(initialWallets);
 
   const [all, setAll] = useState(true);
+  const [lockRoom, setLockRoom] = useState(true);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWallets((prev) => ({ ...prev, [e.target.name]: e.target.checked }));
@@ -88,6 +89,17 @@ const Wallets = () => {
             name={key}
           />
         ))}
+        <CheckboxWithName
+          key={"lockRoom"}
+          title={"Lock Room"}
+          checked={lockRoom}
+          onChange={(e) => {
+            if (e.target.checked) iframeApi.lockRoom();
+            else iframeApi.unlockRoom();
+            setLockRoom(e.target.checked);
+          }}
+          name={"lockRoom"}
+        />
       </div>
     </Section>
   );
