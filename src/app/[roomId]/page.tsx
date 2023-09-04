@@ -41,7 +41,7 @@ export default function Home() {
         <Customize />
         <div className="aspect-video w-full mx-auto p-4 flex">
           <HuddleIframe
-            roomUrl={`https://iframe.huddle01.com/${pathname.split("/")[1]}`}
+            roomUrl={`https://alpha.huddle01.com/${pathname.split("/")[1]}`}
             // roomUrl={`http://localhost:3000/${pathname.split("/")[1]}`}
             // roomUrl="https://iframe.huddle01.com/"
             className="w-full aspect-video"
