@@ -31,7 +31,6 @@ export async function GET(request: Request) {
         method: "POST",
         body: JSON.stringify({
           title: "Huddle01 iFrame Room",
-          roomLocked: true,
         }),
         headers: {
           "Content-type": "application/json",
