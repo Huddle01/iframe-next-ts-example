@@ -1,12 +1,6 @@
 import { randomBytes } from "crypto";
 
-function generateTrulyRandom6DigitNumber(): number {
-  const buffer = randomBytes(6);
 
-  const number = buffer.readUInt32BE(0);
-
-  return number + 1;
-}
 
 class Huddle01CreateRoomError extends Error {
   status: number;
@@ -18,7 +12,6 @@ class Huddle01CreateRoomError extends Error {
 
 export async function GET(request: Request) {
   const API_KEY = process.env.HUDDLE_API_KEY;
-  const id = generateTrulyRandom6DigitNumber();
 
   if (!API_KEY) {
     const jsonResponse = new Response(
@@ -37,7 +30,7 @@ export async function GET(request: Request) {
       {
         method: "POST",
         body: JSON.stringify({
-          title: `Huddle01-Test${id}`,
+          title: "Huddle01 iFrame Room",
           roomLocked: true,
         }),
         headers: {
