@@ -10,7 +10,6 @@ const fetcher = async (url: string) => {
     const data = (await res.json()).roomId
     return data
   } catch (error) {
-    
     throw error;
   }
 }
