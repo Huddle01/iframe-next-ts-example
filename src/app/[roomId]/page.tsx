@@ -13,17 +13,21 @@ export default function Home() {
   const token = searchParams.get("token");
   const pathname = usePathname();
 
-  useEventListner("lobby:joined", (data) => {
-    console.log({ "lobby:joined": data });
+  useEventListner("room:recording-started", () => {
+    console.log("room:recording-started");
   });
-  useEventListner("room:new-peer", (data) => {
-    console.log({ "room:new-peer": data });
+  useEventListner("room:recording-stopping", () => {
+    console.log("room:recording-stopping");
+  });
+  useEventListner("room:recording-stopped", (data) => {
+    console.log({ "room:recording-stopped": data });
   });
 
-  useEventListner("lobby:initialized", () => {
+  useEventListner("app:initialized", () => {
+    console.log("app:initialized");
+
     iframeApi.initialize({
       redirectUrlOnLeave: "https://huddle01.com",
-      // background: "https://picsum.photos/1920/1080?blur=2",
     });
 
     console.log("iframeeee", { token, pathname: pathname.split("/")[1] });
@@ -41,9 +45,8 @@ export default function Home() {
         <Customize />
         <div className="aspect-video w-full mx-auto p-4 flex">
           <HuddleIframe
-            roomUrl={`https://iframe.huddle01.com/${pathname.split("/")[1]}`}
-            // roomUrl={`http://localhost:3000/${pathname.split("/")[1]}`}
-            // roomUrl="https://iframe.huddle01.com/"
+            // roomUrl={`https://iframe.huddle01.com/${pathname.split("/")[1]}`}
+            roomUrl={`http://localhost:3000/${pathname.split("/")[1]}`}
             className="w-full aspect-video"
           />
         </div>

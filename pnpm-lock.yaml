@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@huddle01/iframe':
-    specifier: 0.0.10
-    version: 0.0.10(react@18.2.0)
+    specifier: 0.0.11-alpha.4
+    version: 0.0.11-alpha.4(react@18.2.0)
   '@types/node':
     specifier: 20.1.4
     version: 20.1.4
@@ -99,8 +99,8 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: false
 
-  /@huddle01/iframe@0.0.10(react@18.2.0):
-    resolution: {integrity: sha512-j+aqmd99a9E0TJ30zQtElYOLntUQNW882srguKt7nfSQnDzv+v4XFOM7Sprb54hlK/kPcwfiMEvftXohAwmzrw==}
+  /@huddle01/iframe@0.0.11-alpha.4(react@18.2.0):
+    resolution: {integrity: sha512-jZGfmD+2ipiKbScEag26cuuhbpyWCpVma0zbZ0oM2nqXl+HaFlfx6AyFzJCJEBb33ePW1gdA//Xd1Ituwk851A==}
     peerDependencies:
       react: ^18.2.0
     dependencies:
