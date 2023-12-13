@@ -1,6 +1,7 @@
 "use client";
 
 import { HuddleIframe, iframeApi, useEventListner } from "@huddle01/iframe";
+import { darkTheme } from "@huddle01/iframe/types";
 import Customize from "../components/Customize/Customize";
 import HuddleLogo from "../components/HuddleLogo";
 import DocBtn from "../components/DocBtn";
@@ -48,6 +49,7 @@ export default function Home() {
             // roomUrl={`https://iframe.huddle01.com/${pathname.split("/")[1]}`}
             roomUrl={`http://localhost:3000/${pathname.split("/")[1]}`}
             className="w-full aspect-video"
+            theme={darkTheme}
           />
         </div>
       </div>
