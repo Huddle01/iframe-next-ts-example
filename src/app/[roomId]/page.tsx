@@ -50,8 +50,7 @@ export default function Home({ params }: { params: { roomId: string } }) {
         <div className="aspect-video w-full mx-auto p-4 flex">
           <HuddleIframe
             // if you add displayName, skips the lobby and goes directly to the room
-            roomUrl={`http://localhost:3000/${params.roomId}/lobby?displayName=axitdoteth`}
-            // roomUrl={`https://iframe.huddle01.com/${params.roomId}/lobby?displayName=axitdoteth`}
+            roomUrl={`https://iframe.huddle01.com/${params.roomId}/lobby?displayName=axitdoteth`}
             // if you don't add displayName, you'll be directed to the lobby
             // roomUrl={`https://iframe.huddle01.com/${params.roomId}/`}
             className="w-full aspect-video"
