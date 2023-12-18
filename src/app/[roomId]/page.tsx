@@ -1,14 +1,17 @@
 "use client";
 
 import { HuddleIframe, iframeApi, useEventListner } from "@huddle01/iframe";
-import { darkTheme } from "@huddle01/iframe/types";
+import { darkTheme, lightTheme } from "@huddle01/iframe/types";
 import Customize from "../components/Customize/Customize";
 import HuddleLogo from "../components/HuddleLogo";
 import DocBtn from "../components/DocBtn";
 
 import { usePathname, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
-export default function Home() {
+export default function Home({ params }: { params: { roomId: string } }) {
+  const [isDark, setIsDark] = useState(true);
+
   const searchParams = useSearchParams();
 
   const token = searchParams.get("token");
@@ -43,13 +46,17 @@ export default function Home() {
         <DocBtn />
       </div>
       <div className="flex items-center w-full flex-1">
-        <Customize />
+        <Customize setIsDark={setIsDark} isDark={isDark} />
         <div className="aspect-video w-full mx-auto p-4 flex">
           <HuddleIframe
-            // roomUrl={`https://iframe.huddle01.com/${pathname.split("/")[1]}`}
-            roomUrl={`http://localhost:3000/${pathname.split("/")[1]}`}
+            // if you add displayName, skips the lobby and goes directly to the room
+            roomUrl={`http://localhost:3000/${params.roomId}/lobby?displayName=axitdoteth`}
+            // roomUrl={`https://iframe.huddle01.com/${params.roomId}/lobby?displayName=axitdoteth`}
+            // if you don't add displayName, you'll be directed to the lobby
+            // roomUrl={`https://iframe.huddle01.com/${params.roomId}/`}
             className="w-full aspect-video"
-            theme={darkTheme}
+            theme={isDark ? darkTheme : lightTheme}
+            projectId={process.env.NEXT_PUBLIC_PROJECT_ID || ""}
           />
         </div>
       </div>

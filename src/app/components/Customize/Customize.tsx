@@ -1,10 +1,11 @@
-import React from 'react';
-import Essentials from './Essentials/Essentials';
-import Inputs from './Inputs/Inputs';
-import Wallets from './Wallets/Wallets';
-import Additional from './Additional/Additional';
+import React, { Dispatch, SetStateAction } from "react";
+import Essentials from "./Essentials/Essentials";
+import Inputs from "./Inputs/Inputs";
+import Wallets from "./Wallets/Wallets";
+// import Additional from "./Additional/Additional";
+import Themes, { Props } from "./Themes/Themes";
 
-const Customize = () => {
+const Customize = ({ isDark, setIsDark }: Props) => {
   return (
     <div className="bg-[#121214] border border-slate-700 p-6 rounded-tr-2xl rounded-br-2xl">
       <div className="flex justify-between items-center gap-44">
@@ -15,6 +16,7 @@ const Customize = () => {
       <Inputs />
       <Wallets />
       {/* <Additional /> */}
+      <Themes isDark={isDark} setIsDark={setIsDark} />
     </div>
   );
 };
