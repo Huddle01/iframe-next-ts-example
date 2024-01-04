@@ -7,7 +7,7 @@ import EssentialsIcons, { IEssentialsIcons } from "./EssentialsIcons";
 import { iframeApi } from "@huddle01/iframe";
 
 import cn from "clsx";
-import { useEventListner } from "@huddle01/iframe";
+import { useEventListener } from "@huddle01/iframe";
 
 const Essentials = () => {
   const [isRoomJoined, setIsRoomJoined] = useState(false);
@@ -24,12 +24,12 @@ const Essentials = () => {
     setEssentials((prev) => ({ ...prev, [e.target.name]: e.target.checked }));
   };
 
-  useEventListner("room:joined", () => {
+  useEventListener("room:joined", () => {
     setIsRoomJoined(true);
     setEssentials((prev) => ({ ...prev, Microphone: true, Camera: true }));
   });
 
-  useEventListner("room:failed", ({ reason }) => {
+  useEventListener("room:failed", ({ reason }) => {
     console.log({ reason });
   });
 

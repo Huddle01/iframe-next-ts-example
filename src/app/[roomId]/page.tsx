@@ -1,6 +1,6 @@
 "use client";
 
-import { HuddleIframe, iframeApi, useEventListner } from "@huddle01/iframe";
+import { HuddleIframe, iframeApi, useEventListener } from "@huddle01/iframe";
 import { darkTheme, lightTheme } from "@huddle01/iframe/types";
 import Customize from "../components/Customize/Customize";
 import HuddleLogo from "../components/HuddleLogo";
@@ -17,17 +17,17 @@ export default function Home({ params }: { params: { roomId: string } }) {
   const token = searchParams.get("token");
   const pathname = usePathname();
 
-  useEventListner("room:recording-started", () => {
+  useEventListener("room:recording-started", () => {
     console.log("room:recording-started");
   });
-  useEventListner("room:recording-stopping", () => {
+  useEventListener("room:recording-stopping", () => {
     console.log("room:recording-stopping");
   });
-  useEventListner("room:recording-stopped", (data) => {
+  useEventListener("room:recording-stopped", (data) => {
     console.log({ "room:recording-stopped": data });
   });
 
-  useEventListner("app:initialized", () => {
+  useEventListener("app:initialized", () => {
     console.log("app:initialized");
 
     iframeApi.initialize({
