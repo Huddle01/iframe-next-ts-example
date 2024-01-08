@@ -6,7 +6,7 @@ class Huddle01CreateRoomError extends Error {
   }
 }
 
-export async function GET(request: Request) {
+export async function GET() {
   const API_KEY = process.env.HUDDLE_API_KEY;
 
   if (!API_KEY) {
